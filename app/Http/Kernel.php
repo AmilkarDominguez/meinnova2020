@@ -63,6 +63,7 @@ class Kernel extends HttpKernel
         //shinobi class
         'role' => \Caffeinated\Shinobi\Middleware\UserHasRole::class,
         'permission' => \Caffeinated\Shinobi\Middleware\UserHasPermission::class,
+        //'has.permission' => \Caffeinated\Shinobi\Middleware\UserHasPermission::class,
     ];
 
     /**

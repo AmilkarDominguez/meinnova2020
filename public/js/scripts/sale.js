@@ -313,11 +313,11 @@ function SaleNote(id) {
     //string += "<div class='p-2'>";
     string += "<div class='row p-4'>";
     string += "<div class='col-md-12 align-self-start'>";
-    string += "<h3><b>Distribuidora Miranda</b></h3>";
+    string += "<h3><b>Distribuidora Meinnova</b></h3>";
     //string += "<img src='http://ibpipuc.org/wp-content/uploads/2017/05/logoibp-smart.png' alt='...' class='img-fluid'><br>";
-    string += "Av. Gran Chaco #542 - Palmarcito<br>";
-    string += "Tel: 66-31611 Cel: 74536670<br>";
-    string += "Correo electrónico: mirandaehijos1@gmail.com";
+    string += "tarija<br>";
+    string += "Tel: 66-123456 Cel: 7000000<br>";
+    string += "Correo electrónico: Meinnova@gmail.com";
     string += "</div>";
     string += "</div>";
 
@@ -386,7 +386,7 @@ function printNote() {
     var frameDoc = frame1[0].contentWindow ? frame1[0].contentWindow : frame1[0].contentDocument.document ? frame1[0].contentDocument.document : frame1[0].contentDocument;
     frameDoc.document.open();
     //Create a new HTML document.
-    frameDoc.document.write('<html><head><title>Distribuidora Miranda</title>');
+    frameDoc.document.write('<html><head><title>Distribuidora Meinnova</title>');
     frameDoc.document.write('</head><body>');
     //Append the external CSS file.
     frameDoc.document.write('<link href="css/theme.css" rel="stylesheet" type="text/css" />');

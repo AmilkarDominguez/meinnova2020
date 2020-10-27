@@ -505,58 +505,58 @@ class UsersTableSeeder extends Seeder
         
 
         //CREA EL USUARIOS
-        $bytemo = App\User::create([
-            'name' => 'bytemo',
-            'email'=> 'bytemo@bytemo.com',
-            'state' => 'ACTIVO',
-            'email_verified_at' => now(),
-            'password' => bcrypt('bytemo'),
-            'remember_token' => str_random(10)            
-        ]);
-
-        $lucena = App\User::create([
-            'name' => 'lucena',
-            'email'=> 'lmiranda@miranda.com',
-            'state' => 'ACTIVO',
-            'email_verified_at' => now(),
-            'password' => bcrypt('madison'),
-            'remember_token' => str_random(10)            
-        ]);
-
         $admin = App\User::create([
-            'name' => 'administrador',
-            'email'=> 'administrador@miranda.com',
+            'name' => 'admin',
+            'email'=> 'admin@admin.com',
             'state' => 'ACTIVO',
             'email_verified_at' => now(),
-            'password' => bcrypt('administrador1'),
+            'password' => bcrypt('admin'),
+            'remember_token' => str_random(10)            
+        ]);
+
+        $manager = App\User::create([
+            'name' => 'manager',
+            'email'=> 'manager@manager.com',
+            'state' => 'ACTIVO',
+            'email_verified_at' => now(),
+            'password' => bcrypt('123456789'),
+            'remember_token' => str_random(10)            
+        ]);
+
+        $administrador = App\User::create([
+            'name' => 'administrador',
+            'email'=> 'administrador@meinnova.com',
+            'state' => 'ACTIVO',
+            'email_verified_at' => now(),
+            'password' => bcrypt('123456789'),
             'remember_token' => str_random(10)            
         ]);
 
 
-        $miranda = App\User::create([
+        $meinnova = App\User::create([
             'name' => 'administrador visualizador',
-            'email'=> 'rmiranda@miranda.com',
+            'email'=> 'rmeinnova@meinnova.com',
             'state' => 'ACTIVO',
             'email_verified_at' => now(),
-            'password' => bcrypt('angelica'),
+            'password' => bcrypt('123456789'),
             'remember_token' => str_random(10)            
         ]);
         ///vendedores y cobradores
         $seller = App\User::create([
             'name' => 'vendedor',
-            'email'=> 'vendedores@miranda.com',
+            'email'=> 'vendedores@meinnova.com',
             'state' => 'ACTIVO',
             'email_verified_at' => now(),
-            'password' => bcrypt('vendedoresmiranda'),
+            'password' => bcrypt('123456789'),
             'remember_token' => str_random(10)            
         ]);
         
         $collectors = App\User::create([
             'name' => 'cobradores',
-            'email'=> 'cobradores@miranda.com',
+            'email'=> 'cobradores@meinnova.com',
             'state' => 'ACTIVO',
             'email_verified_at' => now(),
-            'password' => bcrypt('mirandacobradores'),
+            'password' => bcrypt('123456789'),
             'remember_token' => str_random(10)            
         ]); 
 
@@ -566,11 +566,11 @@ class UsersTableSeeder extends Seeder
 
 
         //ASIGNACION DE ROLES
-        $bytemo->assignRoles('root');
-        $lucena->assignRoles('manager');
-        $admin->assignRoles('manager');
+        $admin->assignRoles('root');
+        $manager->assignRoles('manager');
+        $administrador->assignRoles('manager');
 
-        $miranda->assignRoles('owner');
+        $meinnova->assignRoles('owner');
 
         $seller->assignRoles('consultant');
         $collectors->assignRoles('consultant');

@@ -65,7 +65,7 @@
                 <div class="card border-primary p-2">
                     <div class="row">
                         <div class="col align-self-start">
-                            <h3><b>IMPORTADORA MIRANDA</b></h3>
+                            <h3><b>IMPORTADORA MEINNOVA</b></h3>
                             Av. Gran Chacho #542 - Palmarcito<br>
                             Tel: 66-31611 Fax: 66-31611
                         </div>

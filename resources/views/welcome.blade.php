@@ -76,9 +76,9 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Miranda
+                    Meinnova
                 </div>
-                <p class="text-center">Sistema de Almacenamiento Digital Benito 🐱‍👤</p>
+                <p class="text-center"></p>
             </div>
         </div>
     </body>
