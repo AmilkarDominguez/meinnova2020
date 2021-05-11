@@ -13,15 +13,15 @@ class CataloguesTableSeeder extends Seeder
     {
         // TIPO DE PRODUCTO
         App\Catalogue::create([
-            'name' => 'MEDICAMENTO',
+            'name' => 'REDES Y TELECOMUNICACIONES',
             'type_catalog_id'=>1,
-            'description' => 'TIPO DE PRODUCTO MEDICAMENTO.',
+            'description' => 'TIPO DE PRODUCTO REDES Y TELECOMUNICACIONES.',
             'state' => 'ACTIVO'
         ]);
         App\Catalogue::create([
-            'name' => 'INSUMO',
+            'name' => 'ACCESORIO ELECTRÓNICO',
             'type_catalog_id'=>1,
-            'description' => 'TIPO DE PRODUCTO INSUMO.',
+            'description' => 'TIPO DE PRODUCTO ACCESORIO ELECTRÓNICO.',
             'state' => 'ACTIVO'
         ]);
 

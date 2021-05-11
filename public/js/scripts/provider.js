@@ -28,6 +28,7 @@ function ListDatatable()
         },
         columns: [
             { data: 'name'},
+            { data: 'email'},
             { data: 'state',
             "render": function (data, type, row) {
                     if (row.state === 'ACTIVO') {
@@ -143,10 +144,11 @@ function Edit(id) {
 var data_old;
 function show_data(obj) {
     ClearInputs();
-    //console.log(obj)
+    console.log(obj)
     obj = JSON.parse(obj);
     id= obj.id;
     $("#name").val(obj.name);
+    $("#email").val(obj.email);
     $("#description").val(obj.description);
     $("#contact").val(obj.contact);
     $("#phone").val(obj.phone);

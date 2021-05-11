@@ -33,7 +33,7 @@ class UsersTableSeeder extends Seeder
             'slug'        => 'zone',
             'description' => 'Puede navegar en la vista de Zonas',
         ]);
-        
+
 
         Permission::create([
             'name'        => 'Crear registros en catalogos',
@@ -60,7 +60,7 @@ class UsersTableSeeder extends Seeder
         ]);
 
         ///PERMISOS DE PRODUCTOS
-        
+
         Permission::create([
             'name'        => 'Visualizar Productos',
             'slug'        => 'product',
@@ -93,7 +93,7 @@ class UsersTableSeeder extends Seeder
 
 
         ///PERMISOS DE LOTES
-        
+
         Permission::create([
             'name'        => 'Visualizar Lotes',
             'slug'        => 'batch',
@@ -125,9 +125,9 @@ class UsersTableSeeder extends Seeder
         ]);
 
 
-         ///PERMISOS DE PROVEEDORES
-        
-         Permission::create([
+        ///PERMISOS DE PROVEEDORES
+
+        Permission::create([
             'name'        => 'Visualizar Proveedores',
             'slug'        => 'provider',
             'description' => 'Puede navegar en la vista de Proveedores',
@@ -159,7 +159,7 @@ class UsersTableSeeder extends Seeder
 
 
         ///PERMISOS DE VENDEDORES
-        
+
         Permission::create([
             'name'        => 'Visualizar Vendedores',
             'slug'        => 'seller',
@@ -193,7 +193,7 @@ class UsersTableSeeder extends Seeder
 
 
         ///PERMISOS DE CLIENTES
-        
+
         Permission::create([
             'name'        => 'Visualizar Clientes',
             'slug'        => 'client',
@@ -225,7 +225,7 @@ class UsersTableSeeder extends Seeder
         ]);
 
         ///PERMISOS DE COBRADORES
-        
+
         Permission::create([
             'name'        => 'Visualizar Cobradores',
             'slug'        => 'collector',
@@ -325,7 +325,7 @@ class UsersTableSeeder extends Seeder
 
 
 
-        
+
         ////PERMISOS DE COBROS
 
         Permission::create([
@@ -334,7 +334,7 @@ class UsersTableSeeder extends Seeder
             'description' => 'Puede navegar en la vista de Cobros',
         ]);
 
-       /* Permission::create([
+        /* Permission::create([
             'name'        => 'Crear registros en Cobros',
             'slug'        => 'charge.store',
             'description' => 'Puede crear registros',
@@ -400,9 +400,9 @@ class UsersTableSeeder extends Seeder
             'description' => 'Puede eliminar registros',
         ]);
 
-          ////PERMISOS DE SHOP
+        ////PERMISOS DE SHOP
 
-          Permission::create([
+        Permission::create([
             'name'        => 'Visualizar el formulario de la Venta',
             'slug'        => 'shop',
             'description' => 'Puede navegar en la vista de Venta',
@@ -441,124 +441,179 @@ class UsersTableSeeder extends Seeder
         $root = Role::create([
             'name'   => 'Administrador del Sitio',
             'slug'   => 'root',
-            'description' =>'Todos los privilegios',
-            'special'=> 'all-access'
+            'description' => 'Todos los privilegios',
+            'special' => 'all-access'
         ]);
         $manager = Role::create([
             'name'   => 'Manager',
             'slug'   => 'manager',
-            'description' =>'Administrador general menor'
+            'description' => 'Administrador general menor'
         ]);
         $guest = Role::create([
             'name'   => 'Invitado',
             'slug'   => 'guest',
-            'description' =>'Solo puede ver recursos, pero no participar'
+            'description' => 'Solo puede ver recursos, pero no participar'
         ]);
         $consultant = Role::create([
             'name'   => 'Consultor',
             'slug'   => 'consultant',
-            'description' =>'Solo puede ver recursos, pero no participar'
+            'description' => 'Solo puede ver recursos, pero no participar'
         ]);
         $owner = Role::create([
             'name'   => 'Propietario',
             'slug'   => 'owner',
-            'description' =>'Solo puede ver recursos, pero no participar'
+            'description' => 'Solo puede ver recursos, pero no participar'
+        ]);
+        $provider = Role::create([
+            'name'   => 'Proveedor',
+            'slug'   => 'provider',
+            'description' => 'Proveedor'
         ]);
 
-        
+
 
         //ASIGNAR PERMISOS A LOS ROLES
-        $manager->givePermissionTo('industry','line','deposit','zone','catalogs.store','catalogs.edit', 'catalogs.destroy','catalogs.update',
-        'product','product.store','product.edit','product.destroy',
-        'batch','batch.store','batch.edit','batch.destroy',
-        'provider','provider.store','provider.edit','provider.destroy',
-        'seller','seller.store','seller.edit','seller.destroy',
-        'client','client.store','client.edit','client.destroy',
-        'collector','collector.store','collector.edit','collector.destroy',
-        //'user','user.store','user.update','user.destroy',
-        'payment','payment.store','payment.edit','payment.update','payment.destroy',
-        'charge','charge.edit','charge.update','charge.destroy',
-        'sale','sale.show','sale.update','sale.destroy',
-        'shop','shop.store',
-        'salecompleted'
+        $manager->givePermissionTo(
+            'industry',
+            'line',
+            'deposit',
+            'zone',
+            'catalogs.store',
+            'catalogs.edit',
+            'catalogs.destroy',
+            'catalogs.update',
+            'product',
+            'product.store',
+            'product.edit',
+            'product.destroy',
+            'batch',
+            'batch.store',
+            'batch.edit',
+            'batch.destroy',
+            'provider',
+            'provider.store',
+            'provider.edit',
+            'provider.destroy',
+            'seller',
+            'seller.store',
+            'seller.edit',
+            'seller.destroy',
+            'client',
+            'client.store',
+            'client.edit',
+            'client.destroy',
+            'collector',
+            'collector.store',
+            'collector.edit',
+            'collector.destroy',
+            //'user','user.store','user.update','user.destroy',
+            'payment',
+            'payment.store',
+            'payment.edit',
+            'payment.update',
+            'payment.destroy',
+            'charge',
+            'charge.edit',
+            'charge.update',
+            'charge.destroy',
+            'sale',
+            'sale.show',
+            'sale.update',
+            'sale.destroy',
+            'shop',
+            'shop.store',
+            'salecompleted'
         );
 
-        $consultant->givePermissionTo('batch','product','sale');
+        $consultant->givePermissionTo('batch', 'product', 'sale');
 
-        $owner->givePermissionTo('industry','line','deposit','zone',
-        'product',
-        'batch',
-        'provider',
-        'seller',
-        'client',
-        'collector',
-        'charge',
-        'sale','sale.show',
-        'shop',
-        'payment',
-        'salecompleted'
-
+        $owner->givePermissionTo(
+            'industry',
+            'line',
+            'deposit',
+            'zone',
+            'product',
+            'batch',
+            'provider',
+            'seller',
+            'client',
+            'collector',
+            'charge',
+            'sale',
+            'sale.show',
+            'shop',
+            'payment',
+            'salecompleted'
         );
-        $guest->givePermissionTo('industry','line','zone','deposit','product','batch','provider','seller','client','collector');
+        $guest->givePermissionTo('industry', 'line', 'zone', 'deposit', 'product', 'batch', 'provider', 'seller', 'client', 'collector');
 
 
-        
+
 
         //CREA EL USUARIOS
         $admin = App\User::create([
             'name' => 'admin',
-            'email'=> 'admin@admin.com',
+            'email' => 'admin@admin.com',
             'state' => 'ACTIVO',
             'email_verified_at' => now(),
             'password' => bcrypt('admin'),
-            'remember_token' => str_random(10)            
+            'remember_token' => str_random(10)
         ]);
 
         $manager = App\User::create([
             'name' => 'manager',
-            'email'=> 'manager@manager.com',
+            'email' => 'manager@manager.com',
             'state' => 'ACTIVO',
             'email_verified_at' => now(),
             'password' => bcrypt('123456789'),
-            'remember_token' => str_random(10)            
+            'remember_token' => str_random(10)
         ]);
 
         $administrador = App\User::create([
             'name' => 'administrador',
-            'email'=> 'administrador@meinnova.com',
+            'email' => 'administrador@meinnova.com',
             'state' => 'ACTIVO',
             'email_verified_at' => now(),
             'password' => bcrypt('123456789'),
-            'remember_token' => str_random(10)            
+            'remember_token' => str_random(10)
         ]);
 
 
         $meinnova = App\User::create([
             'name' => 'administrador visualizador',
-            'email'=> 'rmeinnova@meinnova.com',
+            'email' => 'rmeinnova@meinnova.com',
             'state' => 'ACTIVO',
             'email_verified_at' => now(),
             'password' => bcrypt('123456789'),
-            'remember_token' => str_random(10)            
+            'remember_token' => str_random(10)
         ]);
         ///vendedores y cobradores
         $seller = App\User::create([
             'name' => 'vendedor',
-            'email'=> 'vendedores@meinnova.com',
+            'email' => 'vendedores@meinnova.com',
             'state' => 'ACTIVO',
             'email_verified_at' => now(),
             'password' => bcrypt('123456789'),
-            'remember_token' => str_random(10)            
+            'remember_token' => str_random(10)
         ]);
-        
+
         $collectors = App\User::create([
             'name' => 'cobradores',
-            'email'=> 'cobradores@meinnova.com',
+            'email' => 'cobradores@meinnova.com',
             'state' => 'ACTIVO',
             'email_verified_at' => now(),
             'password' => bcrypt('123456789'),
-            'remember_token' => str_random(10)            
-        ]); 
+            'remember_token' => str_random(10)
+        ]);
+
+        $proveedor = App\User::create([
+            'name' => 'proveedor',
+            'email' => 'proveedor@proveedor.com',
+            'state' => 'ACTIVO',
+            'email_verified_at' => now(),
+            'password' => bcrypt('123456789'),
+            'remember_token' => str_random(10)
+        ]);
 
 
 
@@ -574,6 +629,8 @@ class UsersTableSeeder extends Seeder
 
         $seller->assignRoles('consultant');
         $collectors->assignRoles('consultant');
+
+        $proveedor->assignRoles('provider');
         //$invited->assignRoles('guest');
 
     }
