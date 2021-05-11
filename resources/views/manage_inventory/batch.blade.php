@@ -101,10 +101,10 @@
                             <label for="code">Código de lote:</label>
                             <input type="text" class="form-control" id="code" name="code" placeholder="Código de lote" required>
                             <br>
-                            <label for="code">Registro Sanitario:</label>
-                            <input type="text" class="form-control" id="sanitary_registration" name="sanitary_registration" placeholder="Registro sanitario" required>
+                            {{-- <label for="code">Registro Sanitario:</label>
+                            <input type="text" class="form-control" id="sanitary_registration" name="sanitary_registration" placeholder="Registro sanitario" required> --}}
                         </div>
-                        <div class="col-sm-3">
+                        {{-- <div class="col-sm-3">
                             <label for="expiration-date">Fecha de vencimiento:</label>
                             <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
                                 <input type="text" id="expiration_date" name="expiration_date" class="form-control datetimepicker-input" data-target="#datetimepicker2" required/>
@@ -112,7 +112,7 @@
                                     <div class="input-group-text"><i class="icon-calendar"></i></div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
 
                         <div class="col-sm-3" hidden>
                                 <label for="state"><b>Estado:</b></label>

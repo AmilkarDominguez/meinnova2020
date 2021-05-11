@@ -33,14 +33,14 @@ class BatchRequest extends FormRequest
         //'payment_status_id'   => 'required|integer',
         //'payment_type_id'     => 'required|integer', 
         'code'                  => 'required|string|max:255',
-        'sanitary_registration' => 'required|string|max:255',
+        // 'sanitary_registration' => 'required|string|max:255',
         'initial_stock'         => 'required|integer',
         'stock'                 => 'required|integer',
         'batch_price'           => 'required|numeric|between:0,99999999.99',
         'wholesaler_price'      => 'required|numeric|between:0,99999999.99',
         //'retail_price'        => 'required|numeric|between:0,99999999.99',
         'entry_date'            => 'required',
-        'expiration_date'       => 'required',
+        // 'expiration_date'       => 'required',
         'state'                 => 'required|string|max:255',
         ];
     }

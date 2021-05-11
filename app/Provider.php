@@ -6,9 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Provider extends Model
 {
-    protected $fillable =[
-        'catalog_zone_id', 'name', 'description','contact',
-        'phone','address','state'
+
+    protected $fillable = [
+        'catalog_zone_id', 'name', 'description', 'contact',
+        'phone', 'address', 'state'
     ];
 
     // un proveedor pertenece a un sola zona
@@ -19,5 +20,9 @@ class Provider extends Model
     public function batches()
     {
         return $this->belongsToMany(Batch::class);
+    }
+    public function user()
+    {
+        return $this->belongsToMany(User::class);
     }
 }

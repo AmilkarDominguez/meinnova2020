@@ -25,15 +25,15 @@ class CreateBatchesTable extends Migration
             $table->unsignedBigInteger('payment_status_id')->unsigned()->nullable(); // estado de pago
             $table->unsignedBigInteger('payment_type_id')->unsigned()->nullable();// tipo de pago
 
-            $table->string('code');// codigo de lote
-            $table->string('sanitary_registration');// codigo
+            $table->string('code')->nullable();// codigo de lote
+            $table->string('sanitary_registration')->nullable();// codigo
             $table->mediumText('description')->nullable();// descripción
-            $table->integer('initial_stock'); // stock inicial
-            $table->integer('stock'); // stock 
-            $table->decimal('batch_price',8,2); // precio del lote 
-            $table->decimal('wholesaler_price',8,2); // precio para mayoristas
-            $table->date('entry_date'); // fecha de entrada en deposito
-            $table->date('expiration_date');// fecha de espiración del lote
+            $table->integer('initial_stock')->nullable(); // stock inicial
+            $table->integer('stock')->nullable(); // stock 
+            $table->decimal('batch_price',8,2)->nullable(); // precio del lote 
+            $table->decimal('wholesaler_price',8,2)->nullable(); // precio para mayoristas
+            $table->date('entry_date')->nullable(); // fecha de entrada en deposito
+            $table->date('expiration_date')->nullable();// fecha de espiración del lote
             $table->enum('state', ['ACTIVO', 'INACTIVO','ELIMINADO'])->default('ACTIVO'); // estado
             $table->timestamps();
             //RELACTIONS

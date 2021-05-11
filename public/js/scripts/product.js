@@ -1,7 +1,7 @@
 var table;
-var id=0;
+var id = 0;
 var title_modal_data = "Registrar Nuevo Producto";
-$(document).ready(function(){
+$(document).ready(function () {
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -12,8 +12,7 @@ $(document).ready(function(){
     catch_parameters();
 });
 // datatable catalogos
-function ListDatatable()
-{
+function ListDatatable() {
     table = $('#table').DataTable({
         dom: 'lfBrtip',
         processing: true,
@@ -24,26 +23,28 @@ function ListDatatable()
         },
         ajax: {
             url: 'product'
-            
+
         },
         columns: [
-            { data: 'name'},
-            { data: 'state',
-            "render": function (data, type, row) {
+            { data: 'name' },
+            {
+                data: 'state',
+                "render": function (data, type, row) {
                     if (row.state === 'ACTIVO') {
                         return '<center><p class="bg-success text-white"><b>ACTIVO</b></p></center>';
                     }
-                    else if (row.state === 'INACTIVO') {          
+                    else if (row.state === 'INACTIVO') {
                         return '<center><p class="bg-warning text-white"><b>INACTIVO</b></p></center>';
                     }
-                    else if (row.state === 'ELIMINADO') {          
+                    else if (row.state === 'ELIMINADO') {
                         return '<center><p class="bg-danger text-white"><b>ELIMINADO</b></p></center>';
                     }
                 }
             },
-            { data: 'description'},
-            { data: 'catalog_product_id'},
-            { data: 'Editar',   orderable: false, searchable: false },
+            { data: 'description' },
+            { data: 'catalog_product_id' },
+            { data: 'QR', orderable: false, searchable: false },
+            { data: 'Editar', orderable: false, searchable: false },
             { data: 'Eliminar', orderable: false, searchable: false },
         ],
         buttons: [
@@ -142,7 +143,7 @@ function show_data(obj) {
     ClearInputs();
     //console.log(obj)
     obj = JSON.parse(obj);
-    id= obj.id;
+    id = obj.id;
     $("#name").val(obj.name);
     $("#description").val(obj.description);
     $("#catalog_product_id").val(obj.catalog_product_id);
@@ -170,7 +171,7 @@ function Update() {
             success: function (result) {
                 if (result.success) {
                     toastr.success(result.msg);
-    
+
                 } else {
                     toastr.warning(result.msg);
                 }
@@ -181,13 +182,13 @@ function Update() {
             },
         });
         table.ajax.reload();
-        
+
     }
 }
 
 //funcion para eliminar valor seleccionado
 function Delete(id_) {
-    id= id_;
+    id = id_;
     $('#modal_eliminar').modal('show');
 }
 $("#btn_delete").click(function () {
@@ -199,13 +200,13 @@ $("#btn_delete").click(function () {
         },
         success: function (result) {
             if (result.success) {
-                toastr.success(result.msg,{"progressBar": true,"closeButton": true});
+                toastr.success(result.msg, { "progressBar": true, "closeButton": true });
             } else {
                 toastr.warning(result.msg);
             }
         },
         error: function (result) {
-            toastr.error(result.msg +' CONTACTE A SU PROVEEDOR POR FAVOR.');
+            toastr.error(result.msg + ' CONTACTE A SU PROVEEDOR POR FAVOR.');
             console.log(result);
         },
 
@@ -227,13 +228,12 @@ function Mayus(e) {
 }
 
 // obtiene los datos del formulario
-function catch_parameters()
-{
+function catch_parameters() {
     var data = $(".form-data").serialize();
-    data += "&id="+id;
+    data += "&id=" + id;
     //console.log(data);
     return data;
-    
+
 }
 
 // muestra el modal
@@ -278,7 +278,7 @@ function ClearInputs() {
     });
     //__Clean values of inputs
     $("#form-data")[0].reset();
-    id=0;
+    id = 0;
 };
 
 function SelectTypeProduct() {
@@ -305,9 +305,26 @@ function SelectTypeProduct() {
             $("#select_type_product").html(code);
         },
         error: function (result) {
-            toastr.error(result.msg +' CONTACTE A SU PROVEEDOR POR FAVOR.');
+            toastr.error(result.msg + ' CONTACTE A SU PROVEEDOR POR FAVOR.');
             console.log(result);
         },
 
     });
+}
+
+//QR CODE
+function Gen_QR(text) {
+    console.log();
+    $('#qrcode').html("");
+    var qrcode = new QRCode(document.getElementById("qrcode"), {
+        colorDark: "#000000",
+        colorLight: "#ffffff",
+        width: 512,
+        height: 512,
+        text: text,
+        //logo: "images/logo.jpg",
+        logoBackgroundColor: '#ffffff',
+        logoBackgroundTransparent: false
+    });
+    $('#modal_qr').modal('show');
 }

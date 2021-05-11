@@ -219,8 +219,8 @@ function show_detail(obj) {
     string += "<p><b>Producto:</b>&nbsp;" + obj.product.name + "</p>";
     string += "<p><b>Stock:</b>&nbsp;" + obj.stock + "</p>";
     string += "<p><b>Línea:</b>&nbsp;" + obj.line.name + "</p>";
-    string += "<p><b>Registro sanitario:</b>&nbsp;" + obj.sanitary_registration + "</p>";
-    string += "<p><b>Fecha de expiración:</b>&nbsp;" + obj.expiration_date + "</p>";
+    // string += "<p><b>Registro sanitario:</b>&nbsp;" + obj.sanitary_registration + "</p>";
+    // string += "<p><b>Fecha de expiración:</b>&nbsp;" + obj.expiration_date + "</p>";
     string += "<p><b>Industria:</b>&nbsp;" + obj.industry.name + "</p>";
     string += "<p><b>Proveedor:</b>&nbsp;" + obj.provider.name + "</p>";
     string += "<p><b>Estado:</b>&nbsp;" + obj.state + "</p>";
