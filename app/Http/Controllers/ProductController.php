@@ -8,6 +8,7 @@ use App\TypeCatalog;
 use App\Product;
 use Yajra\DataTables\DataTables;
 use App\Http\Requests\ProductRequest;
+use Illuminate\Support\Facades\Storage;
 use Validator;
 
 class ProductController extends Controller
@@ -30,6 +31,10 @@ class ProductController extends Controller
                 $catalog_product_id = Catalogue::find($item->catalog_product_id);
                 return  $catalog_product_id->name;
             })
+            ->addColumn('Imagen', function ($item) use ($visibility) {
+                $item->v = $visibility;
+                return '<img src="' . $item->photo . '" alt="image" width="125px" onclick="window.open(\'' . $item->photo . '\');"></img>';
+            })
 
             ->addColumn('QR', function ($item) {
                 return '<a class="btn btn-light text-black border" onclick="Gen_QR(\'' . $item->id . ' | ' . $item->name . '\')"><i class="icon-qrcode"></i></a>';
@@ -44,7 +49,7 @@ class ProductController extends Controller
             ->addColumn('Eliminar', function ($item) {
                 return '<a class="btn btn-xs btn-danger text-white ' . $item->v . '" onclick="Delete(\'' . $item->id . '\')"><i class="icon-trash"></i></a>';
             })
-            ->rawColumns(['QR', 'Editar', 'Eliminar'])
+            ->rawColumns(['Imagen','QR', 'Editar', 'Eliminar'])
             ->toJson();
     }
     public function store(Request $request)
@@ -54,7 +59,12 @@ class ProductController extends Controller
         if ($validator->fails()) {
             return response()->json(['success' => false, 'msg' => $validator->errors()->all()]);
         } else {
-            Product::create($request->all());
+
+            $product = Product::create($request->all());
+            //IMAGE 
+            if ($request->image) {
+                $this->SaveFile($product, $request->image, $request->extension_image, '/images/product/');
+            }
             return response()->json(['success' => true, 'msg' => 'Registro existoso.']);
         }
     }
@@ -78,6 +88,14 @@ class ProductController extends Controller
         } else {
             $Product = Product::find($request->id);
             $Product->update($request->all());
+            
+            if ($request->image && $request->extension_image) {
+                //Delete File
+            
+                Storage::disk('public')->delete($Product->photo);
+                $this->SaveFile($Product, $request->image, $request->extension_image, '/images/Business/');
+            }
+
             return response()->json(['success' => true, 'msg' => 'Se actualizo existosamente.']);
         }
     }
@@ -105,5 +123,51 @@ class ProductController extends Controller
     public function product()
     {
         return view('manage_inventory.product');
+    }
+
+    public function SaveFile($obj, $code, $extension_file, $path)
+    {
+        $image = $code;
+        switch ($extension_file) {
+            case 'png':
+                $image = str_replace('data:image/png;base64,', '', $image);
+                $image = str_replace(' ', '+', $image);
+                $imageURL = $path . time() . '.png';
+                Storage::disk('public')->put($imageURL,  base64_decode($image));
+                $obj->photo = $imageURL;
+                $obj->save();
+                return response()->json(['success' => true, 'msg' => 'Registro existoso']);
+                break;
+            case 'jpeg':
+                $image = str_replace('data:image/jpeg;base64,', '', $image);
+                $image = str_replace(' ', '+', $image);
+                $imageURL = $path . time() . '.jpeg';
+                Storage::disk('public')->put($imageURL,  base64_decode($image));
+                $obj->photo = $imageURL;
+                $obj->save();
+                return response()->json(['success' => true, 'msg' => 'Registro existoso']);
+                break;
+            case 'jpg':
+                $image = str_replace('data:image/jpeg;base64,', '', $image);
+                $image = str_replace(' ', '+', $image);
+                $imageURL = $path . time() . '.jpg';
+                Storage::disk('public')->put($imageURL,  base64_decode($image));
+                $obj->photo = $imageURL;
+                $obj->save();
+                return response()->json(['success' => true, 'msg' => 'Registro existoso']);
+                break;
+            case 'gif':
+                $image = str_replace('data:image/gif;base64,', '', $image);
+                $image = str_replace(' ', '+', $image);
+                $imageURL = $path . time() . '.gif';
+                Storage::disk('public')->put($imageURL,  base64_decode($image));
+                $obj->photo = $imageURL;
+                $obj->save();
+                return response()->json(['success' => true, 'msg' => 'Registro existoso']);
+                break;
+            default:
+                return response()->json(['success' => false, 'msg' => 'Registro existoso, tipo de archivo incompatible.']);
+                break;
+        }
     }
 }

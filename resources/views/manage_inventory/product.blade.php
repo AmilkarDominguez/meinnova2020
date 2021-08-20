@@ -33,6 +33,7 @@
                         <table id="table" class="table table-striped ">
                             <thead>
                                 <tr>
+                                    <td>Imagen</td>
                                     <td>Nombre</td>
                                     <td>Estado</td>
                                     <td>Descripción</td>
@@ -69,8 +70,23 @@
                     <div class="modal-body">
                         <div class="modal-body">
                             <div class="md-form mb-3">
+                                <label><b>Imagen:</b></label>
+                                <div class="row">
+                                    <div class="col-md-4 text-center">
+                                        <img src="" id="image" alt="image" class="img-thumbnail">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="custom-file">
+                                            <input type="file" class="form-control custom-file-input" id="photo" name="photo"
+                                                lang="es" accept=".png,.jpg,.gif">
+                                            <label id="label_image" class="custom-file-label rounded">Elegir archivo</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="md-form mb-3">
                                 <label for="nombre"><b>Nombre:</b></label>
-                                <input type="text" class="form-control" onkeyup="Mayus(thisss);" id="name" name="name"
+                                <input type="text" class="form-control"  id="name" name="name"
                                     placeholder="Nombre" required>
                                 <div class="invalid-feedback">
                                     Dato necesario.
@@ -79,13 +95,14 @@
 
                             <div class="md-form mb-3">
                                 <label for="nombre"><b>Descripción:</b></label>
-                                <textarea type="text" class="form-control" onkeyup="Mayus(thisss);" rows="4" id="description"
-                                    name="description"></textarea>
+                                <textarea type="text" class="form-control" rows="4"
+                                    id="description" name="description"></textarea>
                             </div>
 
                             <div class="md-form mb-3" id="select_type_product">
 
                             </div>
+
 
                             <div class="md-form mb-3">
                                 <label for="state"><b>Estado:</b></label>

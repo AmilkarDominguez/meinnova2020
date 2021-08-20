@@ -129,7 +129,7 @@
                         </div>
                         <div class="col-sm-3">
                             <label for="description"><b>Descripción:</b></label>
-                            <textarea  type="text" class="form-control" onkeyup="Mayus(thisss);" rows="4" id="description" name="description" ></textarea>  
+                            <textarea  type="text" class="form-control"  rows="4" id="description" name="description" ></textarea>  
                         </div>
                     </div>
                     <b>DATOS DE COMPRA:</b>

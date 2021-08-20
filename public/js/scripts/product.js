@@ -26,6 +26,11 @@ function ListDatatable() {
 
         },
         columns: [
+            {
+                data: 'Imagen',
+                orderable: false,
+                searchable: false
+            },
             { data: 'name' },
             {
                 data: 'state',
@@ -146,6 +151,8 @@ function show_data(obj) {
     id = obj.id;
     $("#name").val(obj.name);
     $("#description").val(obj.description);
+    $('#image').attr('src', obj.photo);
+    $('#label_image').html(obj.photo);
     $("#catalog_product_id").val(obj.catalog_product_id);
     if (obj.state == "ACTIVO") {
         $('#estado_activo').prop('checked', true);
@@ -163,7 +170,8 @@ function show_data(obj) {
 // actualiza los datos
 function Update() {
     var data_new = $(".form-data").serialize();
-    if (data_old != data_new) {
+    if (true) {
+        // if (data_old != data_new) {
         $.ajax({
             url: "product/{product}",
             method: 'put',
@@ -231,6 +239,8 @@ function Mayus(e) {
 function catch_parameters() {
     var data = $(".form-data").serialize();
     data += "&id=" + id;
+    data += "&extension_image=" + extension_image;
+    data += "&image=" + reader.result;
     //console.log(data);
     return data;
 
@@ -277,6 +287,8 @@ function ClearInputs() {
         form.classList.remove('was-validated');
     });
     //__Clean values of inputs
+    $('#label_image').html("");
+    $('#image').attr('src', '');
     $("#form-data")[0].reset();
     id = 0;
 };
@@ -327,4 +339,25 @@ function Gen_QR(text) {
         logoBackgroundTransparent: false
     });
     $('#modal_qr').modal('show');
+}
+
+//Metodos para imagen
+var reader = new FileReader();
+var extension_image = "";
+$("#photo").change(function (e) {
+    ImgPreview(this);
+    $fileName = e.target.files[0].name;
+    extension_image = $fileName.replace(/^.*\./, '');
+    $('#label_image').html($fileName);
+    //console.log(extension_image);
+});
+
+function ImgPreview(input) {
+    if (input.files && input.files[0]) {
+        reader.onload = function (e) {
+            //console.log(e);
+            $('#image').attr('src', e.target.result);
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
 }

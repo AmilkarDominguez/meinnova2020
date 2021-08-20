@@ -15,16 +15,16 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('catalog_product_id')->unsigned();// FOREING KEY ZONE TYPE PRODUCT
+            $table->unsignedBigInteger('catalog_product_id')->unsigned(); // FOREING KEY ZONE TYPE PRODUCT
             $table->string('name');
+            $table->string('photo')->nullable();
             $table->mediumText('description')->nullable();
-            $table->enum('state', ['ACTIVO', 'INACTIVO','ELIMINADO'])->default('ACTIVO');
+            $table->enum('state', ['ACTIVO', 'INACTIVO', 'ELIMINADO'])->default('ACTIVO');
             $table->timestamps();
             //RELACTIONS
             $table->foreign('catalog_product_id')->references('id')->on('catalogues')
-            ->onDelete('cascade')
-            ->onUpdate('cascade');
-
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
         });
     }
 

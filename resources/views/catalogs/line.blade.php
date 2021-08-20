@@ -67,7 +67,7 @@
                         <div class="modal-body">
                             <div class="md-form mb-3">
                                 <label for="nombre"><b>Nombre:</b></label>
-                                <input type="text" class="form-control" onkeyup="Mayus(thisss);" id="name" name="name" placeholder="Nombre"
+                                <input type="text" class="form-control"  id="name" name="name" placeholder="Nombre"
                                     required>
                                 <div class="invalid-feedback">
                                     Dato necesario.
@@ -76,7 +76,7 @@
                             
                             <div class="md-form mb-3">
                                 <label for="nombre"><b>Descripción:</b></label>
-                                <textarea  type="text" class="form-control" onkeyup="Mayus(thisss);" rows="4" id="description" name="description" ></textarea>  
+                                <textarea  type="text" class="form-control"  rows="4" id="description" name="description" ></textarea>  
                             </div> 
                             
                             <div class="md-form mb-3">
